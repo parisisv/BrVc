@@ -1,0 +1,6 @@
+requirements.txt
+data/
+env/
+.env/
+__pycache__/
+*.ipynb_checkpoints
