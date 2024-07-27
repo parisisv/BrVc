@@ -68,7 +68,7 @@ def calculate_stream_volume(time, stream, addition_idx):
     """
 
     time_of_addition = time[addition_idx]  # time points, h
-    edge = stream[addition_idx]  # stream edges (corners) (mL)
+    edge = stream[addition_idx]  # stream edges (mL)
     rolled_edge = np.roll(stream[addition_idx], 1)
     rolled_edge[0] = 0
     amount_added = edge - rolled_edge  # Delta V (mL)
@@ -132,8 +132,7 @@ def calculate_volume(
     volume = np.zeros(len(time))
     volume[0] = initial_volume
 
-    # Perform numerical integration using forward Euler
-    for i in range(1, len(time)):
+    for i, _ in enumerate(time[:-1], 1):
         dt = sampling_intervals[i]
         current_time = time[i]
 
@@ -145,4 +144,4 @@ def calculate_volume(
             if abs(current_time - t_sample) < dt / 2:
                 volume[i] += V_sample
 
-    return volume, sampling_volumes
+    return volume
