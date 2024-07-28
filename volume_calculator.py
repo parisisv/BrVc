@@ -50,7 +50,6 @@ def apply_detect_step_changes_to_multiplte_streams(streams_matrix, delta, min_si
         detect_step_changes(row, delta, min_size) for row in transposed_matrix
     ]
 
-    # Transpose the results back to original column-wise structure
     return addition_idx
 
 
@@ -96,27 +95,9 @@ def calculate_additions_from_multiple_streams(time, streams_matrix, addition_idx
 
     final_times_store = np.delete(times_store, 0)
     final_amount_store = np.delete(amount_store, 0)
-    material_addition_matrix = np.vstack((final_times_store, final_amount_store))
+    material_addition_matrix = np.vstack((final_times_store, final_amount_store)).T
 
-    return material_addition_matrix.T
-
-
-def combine_online_and_offline_data(online_data, ofline_data):
-    """combine online and offline data in one matrix for further processing"""
-    return np.vstack((online_data, ofline_data))
-
-
-def sort_time_data(data):
-    """Sorts the data by time (first column)"""
-    return data[data[:, 0].argsort()]
-
-
-def calculate_sampling_intervals(time_points):
-    """Calculate sampling intervals"""
-    rolled_timed_points = np.roll(time_points, 1, axis=0)
-    rolled_timed_points[0] = 0
-    sampling_intevals = time_points - rolled_timed_points
-    return sampling_intevals
+    return material_addition_matrix
 
 
 def calculate_volume(
@@ -145,3 +126,21 @@ def calculate_volume(
                 volume[i] += V_sample
 
     return volume
+
+
+def combine_online_and_offline_data(online_data, ofline_data):
+    """combine online and offline data in one matrix for further processing"""
+    return np.vstack((online_data, ofline_data))
+
+
+def sort_time_data(data):
+    """Sorts the data by time (first column)"""
+    return data[data[:, 0].argsort()]
+
+
+def calculate_time_intervals(time_points):
+    """Calculate time intervals"""
+    rolled_timed_points = np.roll(time_points, 1, axis=0)
+    rolled_timed_points[0] = 0
+    sampling_intevals = time_points - rolled_timed_points
+    return sampling_intevals
