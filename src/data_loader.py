@@ -1,7 +1,7 @@
 import pandas as pd
 from pandera.typing import DataFrame
 import pandera as pa
-from schemas import OnlineDataSchema, OfflineDataSchema
+from src.schemas import OnlineDataSchema, OfflineDataSchema
 
 
 class DataLoader:
