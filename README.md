@@ -1,6 +1,6 @@
 # Bioreactor Volume Calculation and Analysis
 
-This project provides tools for calculating and analyzing bioreactor volume based on online and offline data measurements. It includes modules for data loading, step change detection, volume calculation, and data combination and sorting.
+This project provides tools for calculating the working volume of a bioreactor based solely on (typically online) measurements of the cumulative amount of reagents/nutrients that were used for a specific experiment. The amount of broth that is removed during manual sampling can be also be acounted for.  
 
 ## Project Structure
 
@@ -21,7 +21,7 @@ This project provides tools for calculating and analyzing bioreactor volume base
 
 ### Clone the Repository
 
-To get started, clone the repository from GitHub:
+To get started, cd into the direcotry of your project and clone the repository from GitHub:
 
 ```sh
 git clone https://github.com/yourusername/bioreactor_volume.git
