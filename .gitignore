@@ -1,10 +1,5 @@
-requirements.txt
-data/
-results/
-.results/
 env/
 .env/
 __pycache__/
 *.ipynb_checkpoints
-create_fake_data.py
-fake_data.ipynb
+og_requirements.txt

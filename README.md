@@ -5,10 +5,17 @@ This project provides tools for calculating and analyzing bioreactor volume base
 ## Project Structure
 
 - `src/`
-  - `data_loader.py`: Contains the `DataLoader` class for loading and validating online and offline data with `pandera`.
-  - `stepdetect.py`: Contains the `LRTStepChangeDetector` class for detecting step changes in a time series signal.
+  - `constants.py`: Contains the relevant project parameters. 
+
+  - `data_loader.py`: Contains the `DataLoader` class for loading and validating data with `pandera`.
+
   - `reactor_volume.py`: Contains the `BioreactorVolumeCalculator` class for calculating bioreactor volume.
-  - `utils.py`: Contains utility functions such as `combine_online_and_offline_data`, `sort_time_data`, and `calculate_time_intervals`.
+
+  - `schemas.py`: Contains schemas for online and offline data validation.
+
+  - `stepdetect.py`: Contains the `LRTStepChangeDetector` class for detecting step changes in a time series signal using the *Likelihood Ratio Test* method.
+
+  - `utils.py`: Contains utility functions
 
 ## Installation
 
