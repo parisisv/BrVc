@@ -23,7 +23,6 @@ class BioreactorVolumeCalculator:
             combined_sorted (2D nparray): Combined and sorted array with addition times and amounts for all streams.
         """
 
-        num_streams = len(streams)
         time_of_addition_list = []
         amount_added_list = []
 

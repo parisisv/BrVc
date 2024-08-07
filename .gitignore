@@ -1,5 +1,7 @@
 requirements.txt
 data/
+results/
+.results/
 env/
 .env/
 __pycache__/
