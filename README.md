@@ -1,4 +1,4 @@
-# Bioreactor Volume Calculation and Analysis
+# BrVc: Bioreactor Volume Calculation
 
 This project provides tools for calculating the working volume of a bioreactor based solely on (typically online) measurements of the cumulative amount of reagents/nutrients that were used for a specific experiment. The amount of broth that is removed during manual sampling can be also be acounted for.  
 
@@ -18,6 +18,8 @@ This project provides tools for calculating the working volume of a bioreactor b
   - `utils.py`: Contains utility functions
 
 ## Installation
+
+This project was developed using *Python 3.11*. To get started follow the steps below:
 
 ### Clone the Repository
 
@@ -57,3 +59,44 @@ or conda
 ```sh
 conda install --yes --file requirements.txt
 ```
+
+## A note on the dataset
+
+The dataset provided in this repository is a fictitious data set that contains the cumulative amounts of acid, base and antifoam as well as two nutrient feed streams to the bioreactor. Manual sampling is considered as well. `BrVc`, at the moment, expects only the cumulative amount of each nutrient/reagent and utilises `pandera` schemas to validate that condition.
+
+For using the tool with real datasets the user can modify the corresponding *schema* in order to add/delete nutrient/reagent streams. For example, if only a base solution and a nutrient solution were used in an experiment, the corresponding schema can be written as follows:
+
+```py
+class OnlineDataSchema(DataFrameModel):
+    """Schema for online data"""
+
+    time_h: Series[float] = pa.Field(ge=0, coerce=True)
+    base_total_ml: Series[float] = pa.Field(ge=0, coerce=True)
+    stream_1_total_ml: Series[float] = pa.Field(ge=0, coerce=True)
+
+    @pa.dataframe_check()
+    def check_cum_sum(cls, df: pd.DataFrame) -> bool:
+        # Check if the cumulative sum of each column is not zero
+        columns_with_zero_cumsum = [
+            col for col in df.columns if df[col].cumsum().iloc[-1] == 0
+        ]
+        if columns_with_zero_cumsum:
+            raise pa.errors.SchemaError(
+                schema=cls,
+                data=df,
+                message=f"Columns with zero cumulative sum: {columns_with_zero_cumsum}",
+            )
+        return True
+```
+
+**Important note**: Make sure to use the same class variable names as the headers of then data columns, otherwise `pandera` will raise a `SchemaError`.  
+
+
+
+
+
+
+
+
+
+

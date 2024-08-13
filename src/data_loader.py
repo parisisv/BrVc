@@ -1,7 +1,7 @@
 import pandas as pd
 from pandera.typing import DataFrame
 import pandera as pa
-from src.schemas import OnlineDataSchema, OfflineDataSchema
+from src.schemas import OnlineDataSchema, SampleSchema
 
 
 class DataLoader:
@@ -18,6 +18,6 @@ class DataLoader:
     @pa.check_types(lazy=True)
     def load_offline_data(
         self, sheet_name: str, engine: str = "openpyxl"
-    ) -> DataFrame[OfflineDataSchema]:
+    ) -> DataFrame[SampleSchema]:
         df = pd.read_excel(self.path, sheet_name=sheet_name, engine=engine)
         return df

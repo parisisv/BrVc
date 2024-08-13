@@ -29,7 +29,7 @@ class OnlineDataSchema(DataFrameModel):
         return True
 
 
-class OfflineDataSchema(DataFrameModel):
+class SampleSchema(DataFrameModel):
     """Schema for offline data"""
 
     t_sample_h: Series[float] = pa.Field(ge=0, coerce=True)
