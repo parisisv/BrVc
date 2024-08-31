@@ -26,7 +26,7 @@ This project was developed using *Python 3.11*. To get started follow the steps 
 To get started, cd into the direcotry of your project and clone the repository from GitHub:
 
 ```sh
-git clone https://github.com/yourusername/bioreactor_volume.git
+git clone https://github.com/parisisv/BrVc.git
 cd bioreactor_volume
 ```
 ### Set Up a Virtual Environment from a yaml file
