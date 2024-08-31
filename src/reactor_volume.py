@@ -12,16 +12,7 @@ class BioreactorVolumeCalculator:
     def calculate_stream_volume(
         self, time: np.ndarray, streams: np.ndarray, addition_indices: np.ndarray
     ) -> np.ndarray:
-        """Calculate the amount of material entering the bioreactor for multiple streams at any given time.
-
-        Args:
-            time (nparray): Time horizon (typically in hrs).
-            streams (2D nparray): The cumulative addition streams from the bioreactor logger software for multiple streams.
-            addition_indices (list of arrays): List where each element is an array of indices indicating step changes for each stream.
-
-        Returns:
-            combined_sorted (2D nparray): Combined and sorted array with addition times and amounts for all streams.
-        """
+        """Calculate the amount of material entering the bioreactor for multiple streams at any given time."""
 
         time_of_addition_list = []
         amount_added_list = []
@@ -57,16 +48,7 @@ class BioreactorVolumeCalculator:
         sampling_intervals: np.ndarray,
         material_addition_matrix: np.ndarray,
     ) -> np.ndarray:
-        """Calculate working volume.
-
-        Args:
-            time (nparray): Time horizon (typically in hrs).
-            sampling_intervals (nparray): Time intervals between samples (typically in hrs).
-            material_addition_matrix (2D nparray): Matrix where each row contains a sampling time and corresponding sample volume (mL).
-
-        Returns:
-            volume (nparray): Calculated working volume at each time point.
-        """
+        """Calculate working volume"""
 
         sampling_times = material_addition_matrix[:, 0]  # Sampling times in hours
         sampling_volumes = material_addition_matrix[:, 1]  # Sample volumes in mL

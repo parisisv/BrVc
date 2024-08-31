@@ -2,4 +2,4 @@ env/
 .env/
 __pycache__/
 *.ipynb_checkpoints
-og_requirements.txt
+detailed_requirements.txt

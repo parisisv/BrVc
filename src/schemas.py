@@ -4,7 +4,7 @@ from pandera import DataFrameModel
 from pandera.typing import Series
 
 
-class OnlineDataSchema(DataFrameModel):
+class AdditionDataSchema(DataFrameModel):
     """Schema for online data"""
 
     time_h: Series[float] = pa.Field(ge=0, coerce=True)
