@@ -1,4 +1,4 @@
-# BrVc: Bioreactor Volume Calculation
+# BrVc: Bioreactor Volume Calculator
 
 This project provides tools for calculating the working volume of a bioreactor based solely on (typically online) measurements of the cumulative amount of reagents/nutrients that were used for a specific experiment. The amount of broth that is removed during manual sampling can be also be acounted for.  
 
